@@ -9,27 +9,33 @@ export const App: React.FC = () => {
   const [error, setError] = useState<string | null>(null);
 
   const handleLoadAll = () => {
-    getAll().then(data => {
-      setGoods(data);
-    }).catch(() => {
-      setError('Failed to load all goods')
-    })
+    getAll()
+      .then(data => {
+        setGoods(data);
+      })
+      .catch(() => {
+        setError('Failed to load all goods');
+      });
   };
 
   const handleLoadFive = () => {
-    get5First().then(data => {
-      setGoods(data);
-    }).catch(() => {
-      setError('Failed to load five goods')
-    });
+    get5First()
+      .then(data => {
+        setGoods(data);
+      })
+      .catch(() => {
+        setError('Failed to load five goods');
+      });
   };
 
   const handleLoadRed = () => {
-    getRedGoods().then(data => {
-      setGoods(data);
-    }).catch(() => {
-      setError('Failed to load red goods 😢')
-    });
+    getRedGoods()
+      .then(data => {
+        setGoods(data);
+      })
+      .catch(() => {
+        setError('Failed to load red goods 😢');
+      });
   };
 
   return (
@@ -52,11 +58,7 @@ export const App: React.FC = () => {
         Load red goods
       </button>
 
-      {error && (
-      <p className='error-message'> 
-      {error}
-      </p>
-      ) }
+      {error && <p className="error-message">{error}</p>}
 
       <GoodsList goods={goods} />
     </div>
